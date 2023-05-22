@@ -15,14 +15,15 @@ $(function () {
             $this.prop("disabled", true);
 
             $.ajax({
-                url: "contact.php",
+                url: "https://5vc201xde8.execute-api.us-east-1.amazonaws.com/v1/test",
                 type: "POST",
-                data: {
+                data: JSON.stringify({
                     name: name,
                     email: email,
                     subject: subject,
                     message: message
-                },
+                }),
+                contentType: 'application/json',
                 cache: false,
                 success: function () {
                     $('#success').html("<div class='alert alert-success'>");
