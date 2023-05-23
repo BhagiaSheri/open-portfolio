@@ -8,6 +8,7 @@ $(function () {
             event.preventDefault();
             var name = $("input#name").val();
             var email = $("input#email").val();
+            var phoneNum = $("input#phoneNum").val();
             var subject = $("input#subject").val();
             var message = $("textarea#message").val();
 
@@ -15,11 +16,12 @@ $(function () {
             $this.prop("disabled", true);
 
             $.ajax({
-                url: "https://5vc201xde8.execute-api.us-east-1.amazonaws.com/v1/test",
+                url: "https://qzz3axyt4a.execute-api.us-east-1.amazonaws.com/v1/conatct-me",
                 type: "POST",
                 data: JSON.stringify({
                     name: name,
                     email: email,
+                    phoneNum: phoneNum,
                     subject: subject,
                     message: message
                 }),

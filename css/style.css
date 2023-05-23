@@ -9940,7 +9940,7 @@ h6,
 .portfolio-item:hover .portfolio-btn {
   opacity: 1;
   width: calc(100% - 60px);
-  height: calc(100% - 60px);
+  height: calc(100% - 160px);
   top: 30px;
   left: 30px;
 }
@@ -9965,8 +9965,8 @@ h6,
 
 .blog-date {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-portfolio
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: open-portfolio
+  template:
+    metadata:
+      labels:
+        app: open-portfolio
+    spec:
+      containers:
+        - name: open-portfolio-web-app
+          image: 616390107725.dkr.ecr.us-east-1.amazonaws.com/open-portfolio:latest
+          ports:
+            - containerPort: 80

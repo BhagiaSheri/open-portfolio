@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-portfolio
+  namespace: dev-platform
+  labels:
+    app: my-app
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-portfolio-deployment
+  namespace: dev-platform
+  labels:
+    app: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: web-app
+        image: 616390107725.dkr.ecr.us-east-1.amazonaws.com/open-portfolio:latest
+        ports:
+        - containerPort: 80  
