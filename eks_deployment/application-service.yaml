@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: open-portfolio
+  name: portfolio
   namespace: dev-platform
   labels:
     app: my-app
@@ -17,12 +17,12 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: open-portfolio-deployment
+  name: portfolio-deployment
   namespace: dev-platform
   labels:
     app: my-app
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: my-app
@@ -43,6 +43,6 @@ spec:
                 - arm64
       containers:
       - name: web-app
-        image: 616390107725.dkr.ecr.us-east-1.amazonaws.com/open-portfolio:latest
+        image: 616390107725.dkr.ecr.us-east-1.amazonaws.com/portfolio:2023.21.01
         ports:
         - containerPort: 80  
